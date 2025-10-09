@@ -1,0 +1,25 @@
+.estadisticas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.estadistica {
+  background-color: #1f2937;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.estadistica h4 {
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.estadistica p {
+  font-size: 1.5rem;
+  font-weight: 700;
+}

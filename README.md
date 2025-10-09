@@ -1,16 +1,47 @@
-# React + Vite
+# Sistema de gestión de pedidos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web creada con React y Vite para administrar los pedidos de MailAméricas. El panel permite ver los pedidos existentes, filtrarlos por estado y crear nuevos registros respetando las validaciones de `PropTypes` y las reglas de negocio.
 
-Currently, two official plugins are available:
+## Estructura de carpetas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+src/
+├── App.jsx
+├── App.css
+├── index.css
+├── main.jsx
+├── componentes/
+│   ├── estadisticas/EstadisticasPedidos.jsx
+│   ├── estadisticas/EstadisticasPedidos.css
+│   ├── filtros/FiltroPedidos.jsx
+│   ├── filtros/FiltroPedidos.css
+│   ├── formularios/FormularioPedido.jsx
+│   ├── formularios/FormularioPedido.css
+│   ├── listas/ItemPedido.jsx
+│   ├── listas/ItemPedido.css
+│   ├── listas/ListaPedidos.jsx
+│   └── listas/ListaPedidos.css
+├── datos/pedidosIniciales.js
+└── vistas/
+    ├── PanelPrincipal.jsx
+    └── PanelPrincipal.css
+```
 
-## React Compiler
+La estructura replica el enfoque modular del TP de referencia y agrupa los componentes según su responsabilidad.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Scripts disponibles
 
-## Expanding the ESLint configuration
+- `npm run dev`: inicia el entorno de desarrollo.
+- `npm run build`: compila la aplicación para producción.
+- `npm run preview`: sirve la compilación generada.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Cómo funcionan PropTypes
+
+`PropTypes` es la librería oficial de React para validar las propiedades que reciben los componentes. Cada componente declara su contrato de props indicando el tipo esperado, si son obligatorias y reglas personalizadas. Durante el desarrollo, React mostrará advertencias en la consola si un componente recibe datos que no cumplen con esas reglas. En este proyecto se emplean varias estrategias:
+
+- Tipos básicos como `PropTypes.number` o `PropTypes.string` para validar identificadores y textos.
+- Enumeraciones con `PropTypes.oneOf([...])` para restringir el estado del pedido a `pending`, `shipped` o `delivered`.
+- Validaciones personalizadas para campos que requieren reglas extra, como la cantidad mayor a cero o el nombre del cliente con un mínimo de caracteres.
+- `PropTypes.instanceOf(Date)` para asegurarnos de que las fechas se manejen como objetos `Date`.
+
+Estas validaciones facilitan el mantenimiento, documentan el uso correcto de cada componente y previenen errores al reutilizar la interfaz.
