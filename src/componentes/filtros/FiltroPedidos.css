@@ -1,0 +1,12 @@
+.filtro-pedidos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filtro-pedidos select {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  background-color: #ffffff;
+}
