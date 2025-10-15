@@ -3,8 +3,9 @@
   margin: 0 auto;
   padding: 2rem 1.5rem 3rem;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: 2rem;
+
 }
 
 .panel-encabezado {

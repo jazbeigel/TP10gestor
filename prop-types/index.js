@@ -27,7 +27,7 @@ function createChainableTypeChecker(validate) {
 }
 
 function createPrimitiveTypeChecker(expectedType) {
-  return createChainableTypeChecker((props, propName, componentName, location, propFullName) => {
+  return createChainableTypeChecker((props, propName, componentName, location, propFullName) => { // esto crea una función que comprueba que este la prop y si existe, llama a validate(...) para evaluar su tipo
     const propValue = props[propName];
     const propType = getPropType(propValue);
     if (propType !== expectedType) {

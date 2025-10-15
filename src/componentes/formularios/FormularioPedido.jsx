@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "./FormularioPedido.css";
 
-const estados = ["pending", "shipped", "delivered"];
+const estados = ["pendiente", "enviado", "entregado"];
 
 const itemVacio = () => ({
   productId: "",
@@ -127,8 +127,8 @@ export function FormularioPedido({ onCreate }) {
         onChange={(event) => setFecha(event.target.value)}
       />
 
-      <fieldset className="items">
-        <legend>Productos</legend>
+    <legend className="lengend">Productos</legend>
+      <fieldset className="items">      
         {items.map((item, index) => (
           <div key={index} className="item">
             <input
